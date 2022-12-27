@@ -1,0 +1,39 @@
+.kiosk {
+	width: 1024px;
+	height: 600px;
+	background-position:center;
+	background-size:cover;
+}
+
+.sponsor-ad {
+	width: 255px;
+	height: 600px;
+	float: left;
+	background-position:center;
+	background-size:cover;
+	background-image: url(images/SponsorAds/MnT_122722_1106.gif);
+}
+
+.carousel {
+	width: 769px;
+	height: 600px;
+	float: left;
+	background-position: center;
+	background-size: cover;
+	background-image: url(images/MainAds/DTA5Off.jpg);
+}
+
+.fade {
+	-webkit-animation: 1.5s fade;
+	animation: 1.5 fade;
+}
+
+@-webkit-keyframes fade {
+	from{opacity: 0.4}
+	to{opacity: 1}
+}
+
+@keyframes fade {
+	from{opacity: 0.4}
+	to{opacity: 1}
+}
