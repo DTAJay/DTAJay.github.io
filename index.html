@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <style>
+      {
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: Verdana, sans-serif;
+      }
+
+      .mySlides {
+        display: none;
+      }
+
+      .kiosk {
+        width: 1024px;
+        height: 600px;
+        margin-left: -10px;
+        margin-top: -10px;
+        background-color: black;
+        background-position: center;
+        background-size: cover;
+      }
+
+      .sponsor-ad {
+        width: 255px;
+        height: 600px;
+        float: left;
+        background-position: center;
+        background-size: cover;
+      }
+
+      .slideshow-container {
+        width: 769px;
+        height: 600px;
+        position: absolute;
+        left: 245px;
+        top: 0px;
+      }
+
+      .fadeinout {
+        animation: fadeinout 30s linear forwards;
+        opacity: 0;
+      }
+
+      @keyframes fadeinout {
+
+        8%,
+        92% {
+          opacity: 1;
+        }
+      }
+
+    </style>
+  </head>
+
+  <body>
+    <div class="kiosk">
+
+      <div class="sponsor-ad">
+        <img src="https://i.ibb.co/LYQGN2x/Mn-T-122722-1106.gif">
+      </div>
+
+      <div class="slideshow-container">
+        <div class="mySlides fadeinout">
+          <img src="https://i.ibb.co/tLwm6bX/DTA5Off.jpg" height="600px" width="769px">
+        </div>
+        <div class="mySlides fadeinout">
+          <img src="https://i.ibb.co/bWqQGsF/MTB-122722-1217.jpg" height="600px" width="769px">
+        </div>
+        <div class="mySlides fadeinout">
+          <img src="https://i.ibb.co/mFZzrvL/Three-Chord-122722-1105.jpg" height="600px" width="769px">
+        </div>
+        <div class="mySlides fadeinout">
+          <img src="https://i.ibb.co/y8v8MSM/West-Herr-122722-1216.jpg" height="600px" width="769px">
+        </div>
+
+      </div>
+    </div>
+
+    <script>
+      let slideIndex = 0;
+      showSlides();
+
+      function showSlides() {
+        let i;
+        let slides = document.getElementsByClassName("mySlides");
+        for (i = 0; i < slides.length; i++) {
+          slides[i].style.display = "none";
+        }
+        slideIndex++;
+        if (slideIndex > slides.length) {
+          slideIndex = 1
+        }
+        slides[slideIndex - 1].style.display = "block";
+        setTimeout(showSlides, 30000);
+      }
+
+    </script>
+
+  </body>
+
+</html>
