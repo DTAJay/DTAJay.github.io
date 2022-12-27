@@ -2,7 +2,7 @@ const images = ["DTA5Off.jpg", "MTB_122722_1217.jpg", "ThreeChord_122722_1105.jp
 const carousel = document.querySelector(".carousel");
 const interval = setInterval(function() {
 	startCarousel();
-}, 30000);
+}, 5000);
 var index = 1;
 
 startCarousel = () => {
