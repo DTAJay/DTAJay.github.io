@@ -1,4 +1,4 @@
-const images = ["images/MainAds/DTA/DTA5Off.jpg", "images/MainAds/MTB/MTB_122722_1217.jpg", "images/MainAds/ThreeChord/ThreeChord_122722_1105.jpg","images/MainAds/WestHerr/WestHerr_122722_1216.jpg"];
+const images = ["DTA5Off.jpg", "MTB_122722_1217.jpg", "ThreeChord_122722_1105.jpg","WestHerr_122722_1216.jpg"];
 const carousel = document.querySelector(".carousel");
 const interval = setInterval(function() {
 	startCarousel();
