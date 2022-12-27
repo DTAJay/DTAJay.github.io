@@ -11,7 +11,7 @@
 	float: left;
 	background-position:center;
 	background-size:cover;
-	background-image: url(images/SponsorAds/MnT_122722_1106.gif);
+	background-image: url(MnT_122722_1106.gif);
 }
 
 .carousel {
@@ -20,7 +20,7 @@
 	float: left;
 	background-position: center;
 	background-size: cover;
-	background-image: url(images/MainAds/DTA/DAT5Off.jpg);
+	background-image: url(DAT5Off.jpg);
 }
 
 .fade {
