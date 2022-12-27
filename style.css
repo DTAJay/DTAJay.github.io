@@ -1,6 +1,8 @@
 .kiosk {
 	width: 1024px;
 	height: 600px;
+	border: 1px;
+	border-color: red;
 	background-position:center;
 	background-size:cover;
 }
@@ -8,6 +10,7 @@
 .sponsor-ad {
 	width: 255px;
 	height: 600px;
+	border: 1px;
 	float: left;
 	background-position:center;
 	background-size:cover;
@@ -17,6 +20,7 @@
 .carousel {
 	width: 769px;
 	height: 600px;
+	border: 1px;
 	float: left;
 	background-position: center;
 	background-size: cover;
