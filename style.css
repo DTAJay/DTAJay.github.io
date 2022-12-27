@@ -25,7 +25,7 @@
 
 .fade {
 	-webkit-animation: 1.5s fade;
-	animation: 1.5 fade;
+	animation: 1.5s fade;
 }
 
 @-webkit-keyframes fade {
