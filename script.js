@@ -1,5 +1,5 @@
-const images = ["images/MainAds/DTA5Off.jpg", "images/MainAds/MTB_122722_1217.jpg", "images/MainAds/ThreeChord_122722_1105.jpg","images/MainAds/WestHerr_122722_1216.jpg"];
-const carousel =  document.querySelector(".carousel");
+const images = ["images/MainAds/DTA/DTA5Off.jpg", "images/MainAds/MTB/MTB_122722_1217.jpg", "images/MainAds/ThreeChord/ThreeChord_122722_1105.jpg","images/MainAds/WestHerr/WestHerr_122722_1216.jpg"];
+const carousel = document.querySelector(".carousel");
 const interval = setInterval(function() {
 	startCarousel();
 }, 30000);
