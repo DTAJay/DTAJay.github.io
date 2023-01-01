@@ -1,231 +1,131 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="en">
   <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="jquery.min.js"></script>
     <style>
-    {
-        box-sizing: border-box;
-    }
-
-    body {
-        font-family: Verdana, sans-serif;
-        width: 1024px;
-        height: 600px; 
-        background-color: #000;
-    }
-
-    .kiosk {
-        background-color: #000;
-        background-position: center;
-        background-size: cover;
-    }
-        
-        
-    .sponsor-container {
-        width: 255px;
-        height: 600px;
-        position: absolute;
-        top: 0px;
-        left: 0px;
-        background-color: #373737;
-    }
-    .sponsor-ad {
-        max-width: 255px;
-        max-height: 600px;
-        width: 100%;
-        height: 100%;
-        float: left;
-        background-position: center;
-        background-size: contain;
-        background-repeat: no-repeat;
-        background-color: #000;
-    }
-
-    .slideshow-container {
-        width: 769px;
-        height: 600px;
-        position: absolute;
-        left: 245px;
-        top: 0px;
-        background-color: #000;
-    }
-        
-    .mySlides {
-        display: none;
-        width: 769px;
-        height: 600px;
-        background-position: center;
-        background-size: contain;
-        background-repeat: no-repeat;
-        background-color: #000;
-    }
-        
-    #dta_sponsor_1 {
-        background-image: url("https://raw.githubusercontent.com/DTAJay/DTAJay.github.io/main/sponsor1.gif");
-    }
-    #dta_sponsor_2 {
-        background-image: url("https://raw.githubusercontent.com/DTAJay/DTAJay.github.io/main/sponsor2.jpg");
-    }    
-    
-    #dta_ad_1 {
-        background-image: url("https://digitaltableadvertising.com/wp-content/uploads/2022/12/02_02.jpg");
-    }
-    #dta_ad_2 {
-        background-image: url("https://digitaltableadvertising.com/wp-content/uploads/2022/12/IndHealthj_122722_1751_02.jpg");
-    }
-    #dta_ad_3 {
-        background-image: url("https://digitaltableadvertising.com/wp-content/uploads/2022/12/Basil_122722_1719_02.jpg");
-    }
-    #dta_ad_4 {
-        background-image: url("https://digitaltableadvertising.com/wp-content/uploads/2022/12/ThreeChord02_122722_1802_02.jpg");
-    }  
-    #dta_ad_5 {
-        background-image: url("https://digitaltableadvertising.com/wp-content/uploads/2022/12/02_02.jpg");
-    }  
-    #dta_ad_6 {
-        background-image: url("https://digitaltableadvertising.com/wp-content/uploads/2022/12/IndHealth02_02.jpg");
-    } 
-    #dta_ad_7 {
-        background-image: url("https://digitaltableadvertising.com/wp-content/uploads/2022/12/WestHerr_122722_1659_02.jpg");
-    } 
-    #dta_ad_8 {
-        background-image: url("https://digitaltableadvertising.com/wp-content/uploads/2022/12/ThreeChord_122722_1700_02.jpg");
-    } 
-    #dta_ad_9 {
-        background-image: url("https://digitaltableadvertising.com/wp-content/uploads/2022/12/NPSBZ_122722_1748_02.jpg");
-    } 
-    #dta_ad_10 {
-        background-image: url("https://digitaltableadvertising.com/wp-content/uploads/2022/12/MTB_122722_1658.jpg");
-    } 
-
-    .fadeinout {
-        animation: fadeinout 30s linear forwards;
-        opacity: 0;
-    }
-
-    @keyframes fadeinout {
-        8%,
-        92% {
-          opacity: 1;
+        html,* { 
+            font-family: Verdana, sans-serif; 
+            box-sizing: border-box; 
+            background-color: #000; 
         }
-    }
+        body { 
+            overflow: hidden; /* Hide scrollbars */
+            background-color: #000; 
+            top: 0;
+            left: 0;
+            margin: 0px;
+            padding: 0px;
+        }
+        .dta-kiosk {  
+            display: inline-flex;
+            flex-direction: row; 
+            justify-content: flex-end;
+            top: 0px;
+            left: 0px;
+        }
+        .dta-ad-unit {
+            width: 100%;
+            display: flex;
+            margin: 0 auto;
+            justify-content: flex-end;
+        }
+        #dta-ad img,
+        #dta-sponsor img {
+            z-index:1;
+            position: absolute;
+        }
+        #dta-ad img.active,
+        #dta-sponsor img.active {
+            z-index:3;
+        }     
+        .dta-container-sponsors {
+            width: 255px;
+            height: 600px;
+            margin: auto;  /* Magic! */
+            /*position: absolute;
+            top: 0px;
+            left: 0px;*/
+        }
+        .dta-container-ads { 
+            width: 769px;
+            height: 600px;
+            margin: auto;  /* Magic! */
+            /* position: absolute;
+            top: 0px;
+            left: 255px; */
+        }
+        #cover {
+            background: url("loader.gif") no-repeat scroll center center #000;
+            position: absolute;
+            height: 100%;
+            width: 100%;
+            z-index: 10000;
+            background-color: #000;
+        }
     </style>
-      
-    <link rel="preload" as="image" href="https://raw.githubusercontent.com/DTAJay/DTAJay.github.io/main/sponsor1.gif">
-    <link rel="preload" as="image" href="https://raw.githubusercontent.com/DTAJay/DTAJay.github.io/main/sponsor2.jpg">
-    <link rel="preload" as="image" href="https://digitaltableadvertising.com/wp-content/uploads/2022/12/02_02.jpg">
-    <link rel="preload" as="image" href="https://digitaltableadvertising.com/wp-content/uploads/2022/12/IndHealthj_122722_1751_02.jpg">
-    <link rel="preload" as="image" href="https://digitaltableadvertising.com/wp-content/uploads/2022/12/Basil_122722_1719_02.jpg">
-    <link rel="preload" as="image" href="https://digitaltableadvertising.com/wp-content/uploads/2022/12/ThreeChord02_122722_1802_02.jpg">    
-    <link rel="preload" as="image" href="https://digitaltableadvertising.com/wp-content/uploads/2022/12/02_02.jpg">
-    <link rel="preload" as="image" href="https://digitaltableadvertising.com/wp-content/uploads/2022/12/IndHealth02_02.jpg"> 
-    <link rel="preload" as="image" href="https://digitaltableadvertising.com/wp-content/uploads/2022/12/WestHerr_122722_1659_02.jpg"> 
-    <link rel="preload" as="image" href="https://digitaltableadvertising.com/wp-content/uploads/2022/12/ThreeChord_122722_1700_02.jpg"> 
-    <link rel="preload" as="image" href="https://digitaltableadvertising.com/wp-content/uploads/2022/12/NPSBZ_122722_1748_02.jpg"> 
-    <link rel="preload" as="image" href="https://digitaltableadvertising.com/wp-content/uploads/2022/12/MTB_122722_1658.jpg"> 
-  </head>
+    <script>
+        let fadespeed = 1500;
+        let time_ad = 30000; // in milliseconds
+        let time_sponsor = 120000; // in milliseconds
+        
+        function cycleAds(){
+            var $active_ad = $('#dta-ad .active');
+            var $next_ad = ($active_ad.next().length > 0) ? $active_ad.next() : $('#dta-ad img:first');
+            $next_ad.css('z-index',2);//move the next image up the pile
+            $active_ad.fadeOut(fadespeed,function(){//fade out the top image
+            $active_ad.css('z-index',1).show().removeClass('active');//reset the z-index and unhide the image
+            $next_ad.css('z-index',3).addClass('active');//make the next image the top one
+            });
+        }
 
+        function cycleSponsors(){
+          var $active_sponsor = $('#dta-sponsor .active');
+          var $next_sponsor = ($active_sponsor.next().length > 0) ? $active_sponsor.next() : $('#dta-sponsor img:first');
+          $next_sponsor.css('z-index',2);//move the next image up the pile
+          $active_sponsor.fadeOut(fadespeed,function(){//fade out the top image
+          $active_sponsor.css('z-index',1).show().removeClass('active');//reset the z-index and unhide the image
+          $next_sponsor.css('z-index',3).addClass('active');//make the next image the top one
+          });
+        }        
+        
+        // when the page is ready, start cycles
+        $(document).ready(function(){
+            setInterval('cycleAds()', time_ad);  // run every X milliseconds
+            setInterval('cycleSponsors()', time_sponsor); // run every Y milliseconds
+        })  
+
+        // page loads with #cover div visible with loader image
+        $(window).on('load', function(){
+            $('#cover').fadeOut(fadespeed); // remove loader after page load
+        })    
+    </script>  
+  </head>
   <body>
-    <div class="kiosk">
-      <div class="sponsor-container">
-        <div class="sponsor-ad" id="dta_sponsor_1"></div>
-        <div class="sponsor-ad" id="dta_sponsor_2"></div>
+    <div id="cover"></div>  
+    <div class="dta-kiosk">
+      <div class="dta-container-sponsors">
+        <div class="dta-ad-unit" id="dta-sponsor">
+            <img decoding="async" class="active" src="https://raw.githubusercontent.com/DTAJay/DTAJay.github.io/main/sponsor1.gif"/>
+            <img decoding="async" src="https://raw.githubusercontent.com/DTAJay/DTAJay.github.io/main/sponsor2.jpg"/>
+        </div>
       </div>
-      <div class="slideshow-container">
-        <div class="mySlides fadeinout" id="dta_ad_1"></div>
-        <div class="mySlides fadeinout" id="dta_ad_2"></div>
-        <div class="mySlides fadeinout" id="dta_ad_3"></div>
-        <div class="mySlides fadeinout" id="dta_ad_4"></div>
-        <div class="mySlides fadeinout" id="dta_ad_5"></div>
-        <div class="mySlides fadeinout" id="dta_ad_6"></div>
-        <div class="mySlides fadeinout" id="dta_ad_7"></div>
-        <div class="mySlides fadeinout" id="dta_ad_8"></div>
-        <div class="mySlides fadeinout" id="dta_ad_9"></div>
-        <div class="mySlides fadeinout" id="dta_ad_10"></div>
+      <div class="dta-container-ads">
+        <div class="dta-ad-unit" id="dta-ad">
+            <img decoding="async" src="ads/02_02.jpg" class="active"/>
+            <img decoding="async" src="ads/IndHealthj_122722_1751_02.jpg"/>
+            <img decoding="async" src="ads/Basil_122722_1719_02.jpg"/>
+            <img decoding="async" src="ads/ThreeChord02_122722_1802_02.jpg"/>
+            <img decoding="async" src="ads/02_02.jpg"/>
+            <img decoding="async" src="ads/IndHealth02_02.jpg"/>
+            <img decoding="async" src="ads/WestHerr_122722_1659_02.jpg"/>
+            <img decoding="async" src="ads/ThreeChord_122722_1700_02.jpg"/>
+            <img decoding="async" src="ads/NPSBZ_122722_1748_02.jpg"/>
+            <img decoding="async" src="ads/MTB_122722_1658.jpg"/>        
+        </div>
       </div>  
     </div>
-
-    <script>
-      let slideRotation = 30000;
-      let sponsorRotation = 120000;
-      let slideIndex = 0;
-      let slideCount = 0;
-      let sponsorIndex = 0;
-      let sponsorCount = 0;    
-      setupSlides();
-      setupSponsors();
-      showSlides();
-      showSponsors();
-        
-      function setupSlides() {
-        let i;
-        let slides = document.getElementsByClassName("mySlides");
-          slideCount = 0;
-        for (i = 0; i < slides.length; i++) {
-          slides[i].style.display = "none";
-          slideCount++;
-        }
-        slideIndex = 0;  
-        //console.log("setup done.");
-        slides[0].style.display = "block"; // display first slide
-      }
-
-      function showSlides() {
-        let slides = document.getElementsByClassName("mySlides");
-        //console.log("slideCount: " + slideCount);
-        //console.log("index start: " + slideIndex);    
-        if (slideIndex == slideCount-1) {
-            // reached max reinitalize
-            slideIndex = 0;
-            setupSlides();
-        }
-        else {
-            //console.log("index: " + slideIndex);  
-            slides[0].style.display = "none";
-            slides[slideIndex].style.display = "none";
-            slides[slideIndex+1].style.display = "block";
-            slideIndex++;
-          }
-        //console.log("==round done==");
-        setTimeout(showSlides, slideRotation);
-      }
-        
-        
-     function setupSponsors() {
-        let i;
-        let sponsor = document.getElementsByClassName("sponsor-ad");
-          sponsorCount = 0;
-        for (i = 0; i < sponsor.length; i++) {
-          sponsor[i].style.display = "none";
-          sponsorCount++;
-        }
-        sponsorIndex = 0;  
-        console.log("setup done.");
-        sponsor[0].style.display = "block"; // display first slide
-      }
-
-      function showSponsors() {
-        let sponsor = document.getElementsByClassName("sponsor-ad");
-        //console.log("sponsorCount: " + sponsorCount);
-        //console.log("index start: " + sponsorIndex);    
-        if (sponsorIndex == sponsorCount-1) {
-            // reached max reinitalize
-            sponsorIndex = 0;
-            setupSponsors();
-        }
-        else {
-            //console.log("index: " + sponsorIndex);  
-            sponsor[0].style.display = "none";
-            sponsor[sponsorIndex].style.display = "none";
-            sponsor[sponsorIndex+1].style.display = "block";
-            sponsorIndex++;
-          }
-        //console.log("==round done==");
-        setTimeout(showSponsors, sponsorRotation);
-      }    
-
-    </script>
-
-  </body>
-
+</body>
 </html>
